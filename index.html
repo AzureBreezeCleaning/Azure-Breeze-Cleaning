@@ -586,6 +586,87 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
   border-radius:2px;
 }
 
+
+/* ====== ALL SECTION PARALLAX + DEPTH ====== */
+section {
+  position: relative;
+  overflow: hidden;
+}
+#services, #homestaff, #why, #reviews, #noticeboard, #quote, #book, #overseas, #nationals {
+  transition: background-position 0.1s linear;
+}
+/* Animated section separators */
+section::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,180,216,.2), transparent);
+}
+/* Section inner glow on scroll */
+#services {
+  background: linear-gradient(180deg, var(--deep) 0%, #021825 100%);
+}
+#homestaff {
+  background: linear-gradient(160deg,#0a1218 0%,#021825 50%,#0a1218 100%);
+}
+#why {
+  background: linear-gradient(135deg,#021825 0%,#032435 60%,#021825 100%);
+}
+#reviews {
+  background: linear-gradient(180deg,#f0f4f8 0%,#e8edf2 100%);
+}
+/* Glowing section titles */
+#services .section-title,
+#homestaff .section-title,
+#why .section-title {
+  text-shadow: 0 0 40px rgba(0,180,216,.3);
+}
+/* Premium why-tile glow */
+.why-tile:hover {
+  background: rgba(0,180,216,.1) !important;
+  border-color: rgba(0,180,216,.4) !important;
+  transform: translateY(-4px) scale(1.03) !important;
+  transition: all .3s ease !important;
+}
+/* Flag cards hover */
+.flag-c {
+  transition: transform .3s ease, background .3s ease !important;
+}
+.flag-c:hover {
+  transform: translateY(-4px) scale(1.05) !important;
+  background: rgba(0,180,216,.12) !important;
+}
+/* Premium input focus glow */
+.q-input:focus, .f-inp:focus, .q-select:focus, .f-sel:focus, .q-textarea:focus, .f-txt:focus {
+  border-color: var(--cyan) !important;
+  box-shadow: 0 0 0 3px rgba(0,180,216,.15) !important;
+  outline: none !important;
+}
+/* Animated gradient on CTA buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan) 0%, #0096c7 50%, var(--cyan) 100%) !important;
+  background-size: 200% 200% !important;
+  animation: btnShimmer 3s ease infinite !important;
+}
+@keyframes btnShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+/* Smooth nav on scroll */
+nav {
+  transition: background .3s ease, box-shadow .3s ease, backdrop-filter .3s ease !important;
+}
+/* Trust bar animation */
+.trust-item {
+  transition: color .2s ease, transform .2s ease !important;
+}
+.trust-item:hover {
+  color: var(--cyan) !important;
+  transform: translateY(-2px) !important;
+}
+
 </style>
 </head>
 <body>
@@ -733,10 +814,10 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
   <h2 class="section-title fade-in-up">Our Services</h2>
   <p class="section-sub">Everything your home and family needs — professional cleaning to dedicated full-time home staff.</p>
   <div class="svc-grid">
-    <div class="svc-card"><div class="svc-icon">🏠</div><div class="svc-name">Residential Cleaning</div><p class="svc-desc">Thorough home cleaning by trained professionals. Kitchens, bathrooms, bedrooms — done right.</p></div>
-    <div class="svc-card"><div class="svc-icon">🏢</div><div class="svc-name">Commercial Cleaning</div><p class="svc-desc">Office and commercial space cleaning. We handle all sizes from small offices to large facilities.</p></div>
-    <div class="svc-card"><div class="svc-icon">👩‍🍳</div><div class="svc-name">Housemaid Placement</div><p class="svc-desc">Live-In or Live-Out housemaids matched to your family. All vetted, trained and ready to serve.</p></div>
-    <div class="svc-card"><div class="svc-icon">👶</div><div class="svc-name">Nanny Placement</div><p class="svc-desc">Trusted, experienced nannies for childcare. Full-time Live-In or Live-Out arrangements available.</p></div>
+    <div class="svc-card fade-in-up"><div class="svc-icon">🏠</div><div class="svc-name">Residential Cleaning</div><p class="svc-desc">Thorough home cleaning by trained professionals. Kitchens, bathrooms, bedrooms — done right.</p></div>
+    <div class="svc-card fade-in-up"><div class="svc-icon">🏢</div><div class="svc-name">Commercial Cleaning</div><p class="svc-desc">Office and commercial space cleaning. We handle all sizes from small offices to large facilities.</p></div>
+    <div class="svc-card fade-in-up"><div class="svc-icon">👩‍🍳</div><div class="svc-name">Housemaid Placement</div><p class="svc-desc">Live-In or Live-Out housemaids matched to your family. All vetted, trained and ready to serve.</p></div>
+    <div class="svc-card fade-in-up"><div class="svc-icon">👶</div><div class="svc-name">Nanny Placement</div><p class="svc-desc">Trusted, experienced nannies for childcare. Full-time Live-In or Live-Out arrangements available.</p></div>
   </div>
 </section>
 
@@ -750,12 +831,12 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
     <button class="ttab" onclick="showStaff('liveout',this)">🚗 Live-Out</button>
   </div>
   <div class="staff-grid" id="s-livein">
-    <div class="staff-card"><h3>Housemaid — Live-In</h3><p>Your housemaid lives with your family, fully dedicated to your home and daily routine.</p><ul class="sf-list"><li>Accommodation provided by client</li><li>10 hours per day, 6 days a week</li><li>Full household management</li><li>Cooking, cleaning &amp; childcare support</li><li>All Qatar public holidays observed</li></ul></div>
-    <div class="staff-card"><h3>Nanny — Live-In</h3><p>A dedicated live-in nanny always available for your family's peace of mind.</p><ul class="sf-list"><li>Infant &amp; child care specialists</li><li>10 hours per day schedule</li><li>Educational activities &amp; supervision</li><li>Accommodation by client family</li><li>Available 6 days a week</li></ul></div>
+    <div class="staff-card fade-in-up"><h3>Housemaid — Live-In</h3><p>Your housemaid lives with your family, fully dedicated to your home and daily routine.</p><ul class="sf-list"><li>Accommodation provided by client</li><li>10 hours per day, 6 days a week</li><li>Full household management</li><li>Cooking, cleaning &amp; childcare support</li><li>All Qatar public holidays observed</li></ul></div>
+    <div class="staff-card fade-in-up"><h3>Nanny — Live-In</h3><p>A dedicated live-in nanny always available for your family's peace of mind.</p><ul class="sf-list"><li>Infant &amp; child care specialists</li><li>10 hours per day schedule</li><li>Educational activities &amp; supervision</li><li>Accommodation by client family</li><li>Available 6 days a week</li></ul></div>
   </div>
   <div class="staff-grid" id="s-liveout" style="display:none">
-    <div class="staff-card"><h3>Housemaid — Live-Out</h3><p>Your housemaid commutes daily. Fresh Breeze Cleaning Services provides staff accommodation — no extra cost to you.</p><ul class="sf-list"><li>Free accommodation by Fresh Breeze Cleaning Services</li><li>10 hours per day, 6 days a week</li><li>Reliable daily commute</li><li>All household tasks covered</li><li>Flexible scheduling available</li></ul></div>
-    <div class="staff-card"><h3>Nanny — Live-Out</h3><p>Professional daily nanny. Staff stay in Fresh Breeze Cleaning Services accommodation and come to you daily.</p><ul class="sf-list"><li>Fresh Breeze Cleaning Services provides accommodation</li><li>Consistent daily schedule</li><li>Experienced childcare professionals</li><li>Infant through school-age care</li><li>Safe, vetted candidates only</li></ul></div>
+    <div class="staff-card fade-in-up"><h3>Housemaid — Live-Out</h3><p>Your housemaid commutes daily. Fresh Breeze Cleaning Services provides staff accommodation — no extra cost to you.</p><ul class="sf-list"><li>Free accommodation by Fresh Breeze Cleaning Services</li><li>10 hours per day, 6 days a week</li><li>Reliable daily commute</li><li>All household tasks covered</li><li>Flexible scheduling available</li></ul></div>
+    <div class="staff-card fade-in-up"><h3>Nanny — Live-Out</h3><p>Professional daily nanny. Staff stay in Fresh Breeze Cleaning Services accommodation and come to you daily.</p><ul class="sf-list"><li>Fresh Breeze Cleaning Services provides accommodation</li><li>Consistent daily schedule</li><li>Experienced childcare professionals</li><li>Infant through school-age care</li><li>Safe, vetted candidates only</li></ul></div>
   </div>
 </section>
 
@@ -766,18 +847,18 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
     <h2 class="section-title" style="color:#fff">Qatar Families Trust Us</h2>
     <p class="section-sub">We match the right people to the right homes, with care and professionalism.</p>
     <div class="why-pts">
-      <div class="why-pt"><div class="why-ico">🔍</div><div><h4>Fully Vetted Staff</h4><p>Every candidate is background-checked, reference-verified and trained before placement.</p></div></div>
-      <div class="why-pt"><div class="why-ico">🤝</div><div><h4>Right Match Guarantee</h4><p>We replace any staff member free of charge if they are not the right fit for your family.</p></div></div>
-      <div class="why-pt"><div class="why-ico">📱</div><div><h4>24/7 WhatsApp Support</h4><p>Our team is always reachable on WhatsApp for any questions or urgent needs.</p></div></div>
-      <div class="why-pt"><div class="why-ico">🇶🇦</div><div><h4>Qatar-Wide Coverage</h4><p>All regions: Doha, Lusail, The Pearl, Al Rayyan, Al Wakrah and beyond.</p></div></div>
+      <div class="why-pt fade-in-up"><div class="why-ico">🔍</div><div><h4>Fully Vetted Staff</h4><p>Every candidate is background-checked, reference-verified and trained before placement.</p></div></div>
+      <div class="why-pt fade-in-up"><div class="why-ico">🤝</div><div><h4>Right Match Guarantee</h4><p>We replace any staff member free of charge if they are not the right fit for your family.</p></div></div>
+      <div class="why-pt fade-in-up"><div class="why-ico">📱</div><div><h4>24/7 WhatsApp Support</h4><p>Our team is always reachable on WhatsApp for any questions or urgent needs.</p></div></div>
+      <div class="why-pt fade-in-up"><div class="why-ico">🇶🇦</div><div><h4>Qatar-Wide Coverage</h4><p>All regions: Doha, Lusail, The Pearl, Al Rayyan, Al Wakrah and beyond.</p></div></div>
     </div>
   </div>
   <div>
     <div class="why-tiles">
-      <div class="why-tile"><div style="font-size:1.4rem;margin-bottom:.35rem">⭐</div><div class="why-tile-val">50+</div><div class="why-tile-lbl">Verified Reviews</div></div>
-      <div class="why-tile"><div style="font-size:1.4rem;margin-bottom:.35rem">⭐</div><div class="why-tile-val">4.9</div><div class="why-tile-lbl">Avg Rating</div></div>
-      <div class="why-tile"><div style="font-size:1.4rem;margin-bottom:.35rem">🌍</div><div class="why-tile-val">10+</div><div class="why-tile-lbl">Nationalities</div></div>
-      <div class="why-tile"><div style="font-size:1.4rem;margin-bottom:.35rem">🇶🇦</div><div class="why-tile-val">All</div><div class="why-tile-lbl">Qatar Regions</div></div>
+      <div class="why-tile fade-in-up"><div style="font-size:1.4rem;margin-bottom:.35rem">⭐</div><div class="why-tile-val">50+</div><div class="why-tile-lbl">Verified Reviews</div></div>
+      <div class="why-tile fade-in-up"><div style="font-size:1.4rem;margin-bottom:.35rem">⭐</div><div class="why-tile-val">4.9</div><div class="why-tile-lbl">Avg Rating</div></div>
+      <div class="why-tile fade-in-up"><div style="font-size:1.4rem;margin-bottom:.35rem">🌍</div><div class="why-tile-val">10+</div><div class="why-tile-lbl">Nationalities</div></div>
+      <div class="why-tile fade-in-up"><div style="font-size:1.4rem;margin-bottom:.35rem">🇶🇦</div><div class="why-tile-val">All</div><div class="why-tile-lbl">Qatar Regions</div></div>
     </div>
   </div>
 </section>
@@ -787,12 +868,12 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
   <h2 class="section-title" style="color:#fff;margin-bottom:.5rem">Our Staff Nationalities</h2>
   <p class="section-sub" style="margin:0 auto 0;text-align:center">Trusted and experienced staff from across Asia and Africa.</p>
   <div class="flag-wrap">
-    <div class="flag-c"><span>🇵🇭</span> Philippines</div>
-    <div class="flag-c"><span>🇳🇵</span> Nepal</div>
-    <div class="flag-c"><span>🇮🇳</span> India</div>
-    <div class="flag-c"><span>🇧🇩</span> Bangladesh</div>
-    <div class="flag-c"><span>🇵🇰</span> Pakistan</div>
-    <div class="flag-c"><span>🌍</span> Africa</div>
+    <div class="flag-c fade-in-up"><span>🇵🇭</span> Philippines</div>
+    <div class="flag-c fade-in-up"><span>🇳🇵</span> Nepal</div>
+    <div class="flag-c fade-in-up"><span>🇮🇳</span> India</div>
+    <div class="flag-c fade-in-up"><span>🇧🇩</span> Bangladesh</div>
+    <div class="flag-c fade-in-up"><span>🇵🇰</span> Pakistan</div>
+    <div class="flag-c fade-in-up"><span>🌍</span> Africa</div>
   </div>
 </section>
 
@@ -884,57 +965,56 @@ body > *:not(.anim-orb){ position:relative; z-index:1; }
   <h2 class="section-title" style="color:#1a1a2e">What Families Say</h2>
   <p class="section-sub" style="color:#555">Real reviews from families across Qatar who trust Fresh Breeze Cleaning Services.</p>
   <div class="rev-grid">
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services placed a wonderful live-in housemaid for our villa in West Bay. She is professional, trustworthy, and our home has never been so well-maintained!</p><div class="reviewer"><div class="rev-av">FA</div><div><div class="rev-name">Fatima A*******</div><div class="rev-loc">Live-In Housemaid · West Bay 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We hired a live-out nanny for our two children. She arrives on time every morning and the schedule works perfectly for our busy family in Lusail.</p><div class="reviewer"><div class="rev-av">KM</div><div><div class="rev-name">Khalid &amp; Maryam A**</div><div class="rev-loc">Live-Out Nanny · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our housemaid has been with us almost a year. She is part of our family. Professional, caring and incredibly hardworking. Thank you Fresh Breeze Cleaning Services!</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Sara A********</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our nanny from Fresh Breeze Cleaning Services is amazing with our baby. Very patient, loving and responsible. The process was smooth and the team was very helpful.</p><div class="reviewer"><div class="rev-av">MA</div><div><div class="rev-name">Mohammed A*****</div><div class="rev-loc">Live-In Nanny · Al Waab 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Very responsive team. They found us a great housemaid within days. She keeps our home spotless and is wonderful with our kids. Best decision we made!</p><div class="reviewer"><div class="rev-av">HA</div><div><div class="rev-name">Hessa A*******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">I was worried about finding a trustworthy nanny but Fresh Breeze Cleaning Services made it so easy. All staff are verified and trained. Our nanny is gentle and my daughter loves her!</p><div class="reviewer"><div class="rev-av">LA</div><div><div class="rev-name">Layla A*********</div><div class="rev-loc">Live-Out Nanny · Msheireb 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services found us a fantastic nanny in less than a week. She handles our twins with so much patience and love. Truly a five star service.</p><div class="reviewer"><div class="rev-av">DA</div><div><div class="rev-name">Dana &amp; Tariq A*</div><div class="rev-loc">Live-In Nanny · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">What makes Fresh Breeze Cleaning Services special is how they care about matching the right person. Our housemaid has been with us 8 months and we couldn't be happier.</p><div class="reviewer"><div class="rev-av">YA</div><div><div class="rev-name">Yousef A**</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">The best cleaning company in Qatar. Our office was cleaned to an incredibly high standard. Staff were friendly and finished ahead of schedule.</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Salma A*</div><div class="rev-loc">Office Cleaning · C-Ring Road 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We have been clients of Fresh Breeze Cleaning Services for over a year. Every interaction has been professional. Our live-in nanny is brilliant and our children are so happy.</p><div class="reviewer"><div class="rev-av">OA</div><div><div class="rev-name">Omar &amp; Fatima A*</div><div class="rev-loc">Live-In Nanny · Umm Salal 🇶🇦</div></div></div></div>
-
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services provided us with an exceptional live-in housemaid. She is hardworking, honest and keeps our home in perfect order every single day.</p><div class="reviewer"><div class="rev-av">NA</div><div><div class="rev-name">Noura A*******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our live-out housemaid from Fresh Breeze is wonderful. She comes every day on time and leaves everything spotless. We are very happy with the service!</p><div class="reviewer"><div class="rev-av">RA</div><div><div class="rev-name">Rania A****</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">I am so impressed by how professional Fresh Breeze Cleaning Services is. They matched us with the perfect housemaid in just a few days. Highly recommend!</p><div class="reviewer"><div class="rev-av">AB</div><div><div class="rev-name">Ahmed B*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We have a live-out housemaid from Fresh Breeze and she is absolutely fantastic. Very thorough, reliable and a pleasure to have in our home.</p><div class="reviewer"><div class="rev-av">MB</div><div><div class="rev-name">Mariam B******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Excellent service from start to finish. Our live-in housemaid is well-trained, trustworthy and has become a valued part of our household. Thank you Fresh Breeze!</p><div class="reviewer"><div class="rev-av">SM</div><div><div class="rev-name">Sophie M*****</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">As a European family living in Qatar, we were nervous about finding reliable help. Fresh Breeze made the whole process so easy and our housemaid is absolutely brilliant!</p><div class="reviewer"><div class="rev-av">EL</div><div><div class="rev-name">Emma L*****</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇬🇧</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We have used Fresh Breeze for our live-out housemaid for 6 months now. She is punctual, efficient and wonderful with our children. Could not ask for more!</p><div class="reviewer"><div class="rev-av">CL</div><div><div class="rev-name">Claire &amp; James L**</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇫🇷</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze found us a live-in housemaid who truly feels like family. She is caring, professional and we trust her completely with our home and children.</p><div class="reviewer"><div class="rev-av">TA</div><div><div class="rev-name">Tariq A******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">I was referred to Fresh Breeze by a friend and I am so glad I called them. Our live-out housemaid is amazing and the team was so helpful throughout the process.</p><div class="reviewer"><div class="rev-av">DA</div><div><div class="rev-name">Dalal A*****</div><div class="rev-loc">Live-Out Housemaid · Umm Salal 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid from Fresh Breeze has transformed our daily life. The house is always clean, meals are prepared and we have so much more time for our family.</p><div class="reviewer"><div class="rev-av">WA</div><div><div class="rev-name">Waleed A*******</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Five stars without hesitation. Fresh Breeze provided a live-out housemaid who is simply outstanding. Very professional, kind and we are extremely satisfied.</p><div class="reviewer"><div class="rev-av">AM</div><div><div class="rev-name">Anna M******</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇩🇪</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">As expats in Qatar, we needed reliable household help fast. Fresh Breeze delivered within days with a wonderful live-in housemaid. We are beyond happy!</div><div class="reviewer"><div class="rev-av">PB</div><div><div class="rev-name">Peter &amp; Brigitte B*</div><div class="rev-loc">Live-In Housemaid · West Bay 🇧🇪</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services truly exceeded our expectations. Our live-in housemaid is diligent, warm and we could not imagine our home without her now.</p><div class="reviewer"><div class="rev-av">FA</div><div><div class="rev-name">Faisal A*****</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">The live-out housemaid Fresh Breeze sent us is absolutely wonderful. She manages everything perfectly and our home has never looked better. Highly recommend!</p><div class="reviewer"><div class="rev-av">HA</div><div><div class="rev-name">Hana A*******</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We searched for a long time for the right housemaid. Fresh Breeze found us the perfect match. Our live-in housemaid is reliable, skilled and very respectful.</p><div class="reviewer"><div class="rev-av">JR</div><div><div class="rev-name">Julie R*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇫🇷</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze is the best agency in Qatar. Our live-out housemaid is a gem — always smiling, thorough and very professional. We are 100% satisfied customers!</p><div class="reviewer"><div class="rev-av">BA</div><div><div class="rev-name">Bader A****</div><div class="rev-loc">Live-Out Housemaid · C-Ring Road 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">I cannot thank Fresh Breeze enough. They found us a wonderful live-in housemaid who is honest, hardworking and amazing with our elderly mother. Truly grateful!</p><div class="reviewer"><div class="rev-av">AA</div><div><div class="rev-name">Aisha A*******</div><div class="rev-loc">Live-In Housemaid · Al Dafna 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We have been with Fresh Breeze for over a year and our live-out housemaid is simply the best. Always on time, always thorough and always cheerful. Love this service!</p><div class="reviewer"><div class="rev-av">MK</div><div><div class="rev-name">Maria K*****</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇬🇷</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid from Fresh Breeze has been with us for 10 months. She is exceptional in every way — clean, organised and so kind to our children.</p><div class="reviewer"><div class="rev-av">QA</div><div><div class="rev-name">Qassim A*****</div><div class="rev-loc">Live-In Housemaid · Umm Salal 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze provided us with a live-out housemaid who goes above and beyond every single day. The team was professional and the placement process was seamless.</p><div class="reviewer"><div class="rev-av">LH</div><div><div class="rev-name">Laura H******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇳🇱</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We are a big family and needed someone experienced. Fresh Breeze delivered perfectly — our live-in housemaid manages everything with ease and we are very grateful.</p><div class="reviewer"><div class="rev-av">JA</div><div><div class="rev-name">Jassim A******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">The recruitment process with Fresh Breeze was fast and transparent. Our live-out housemaid started within a week and she is absolutely brilliant. 5 stars!</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Shaikha A*****</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fantastic agency! Fresh Breeze matched us with an incredible live-in housemaid. She keeps our villa spotless and our kids absolutely adore her. So thankful!</p><div class="reviewer"><div class="rev-av">TS</div><div><div class="rev-name">Thomas S******</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇦🇹</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We had a great experience with Fresh Breeze. Our live-out housemaid is hard working, discreet and very professional. We recommend them to all our friends in Qatar.</p><div class="reviewer"><div class="rev-av">NA</div><div><div class="rev-name">Nadia &amp; Saad A*</div><div class="rev-loc">Live-Out Housemaid · Al Waab 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid from Fresh Breeze Cleaning Services is absolutely incredible. She is detail-oriented, caring and we have never had to worry about our home.</p><div class="reviewer"><div class="rev-av">MA</div><div><div class="rev-name">Moza A*******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">I was referred by a colleague and Fresh Breeze did not disappoint. Our live-out housemaid is exceptional. Always reliable and our home is always immaculate!</p><div class="reviewer"><div class="rev-av">CF</div><div><div class="rev-name">Charlotte F****</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇬🇧</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze found us a live-in housemaid who is a true professional. She manages our large home effortlessly and our family is happier than ever. Thank you!</p><div class="reviewer"><div class="rev-av">IA</div><div><div class="rev-name">Ibrahim A******</div><div class="rev-loc">Live-In Housemaid · Al Dafna 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We love our live-out housemaid from Fresh Breeze! She is wonderful with our home and our pets. The team was so helpful and made the whole process very simple.</p><div class="reviewer"><div class="rev-av">VA</div><div><div class="rev-name">Valentina A***</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇮🇹</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Outstanding service! Our live-in housemaid is the best we have ever had. Fresh Breeze really takes the time to find the right match. We are lifelong customers!</p><div class="reviewer"><div class="rev-av">AA</div><div><div class="rev-name">Abdullah A*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze provided us with a live-out housemaid who is simply outstanding. Professional, kind and incredibly thorough. Best agency in Qatar without a doubt!</p><div class="reviewer"><div class="rev-av">RA</div><div><div class="rev-name">Reem A*******</div><div class="rev-loc">Live-Out Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">As a busy working mum, having a reliable live-in housemaid from Fresh Breeze has changed my life completely. I can focus on work knowing my home is in great hands.</p><div class="reviewer"><div class="rev-av">SW</div><div><div class="rev-name">Sarah W******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇦🇺</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Very happy with Fresh Breeze! Our live-out housemaid is fantastic — disciplined, friendly and does an excellent job every time. We will never go anywhere else.</p><div class="reviewer"><div class="rev-av">KA</div><div><div class="rev-name">Khalifa A*****</div><div class="rev-loc">Live-Out Housemaid · Umm Salal 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services gave us the most reliable live-in housemaid. She treats our home with so much care and respect. We are truly grateful for this service.</p><div class="reviewer"><div class="rev-av">LA</div><div><div class="rev-name">Latifa A*******</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We hired a live-out housemaid through Fresh Breeze and could not be more satisfied. The service was fast, professional and our housemaid is simply wonderful.</p><div class="reviewer"><div class="rev-av">HP</div><div><div class="rev-name">Hannah P*****</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇸🇪</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid has been with us 7 months now and we could not be happier. Fresh Breeze really listens to what you need and delivers exactly that!</p><div class="reviewer"><div class="rev-av">MA</div><div><div class="rev-name">Mansour A****</div><div class="rev-loc">Live-In Housemaid · C-Ring Road 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Incredible experience with Fresh Breeze. Our live-out housemaid is efficient, warm and takes great pride in her work. Our home has never been so clean and organised!</p><div class="reviewer"><div class="rev-av">EA</div><div><div class="rev-name">Elsa A******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇩🇰</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze matched us with a fantastic live-in housemaid who exceeded all our expectations. The team was professional and supportive throughout. Highly recommended!</p><div class="reviewer"><div class="rev-av">BA</div><div><div class="rev-name">Badriya A*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">We are so pleased with our live-out housemaid from Fresh Breeze. She is attentive, hardworking and always goes the extra mile. Fantastic service all round!</p><div class="reviewer"><div class="rev-av">TA</div><div><div class="rev-name">Tala A*******</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇶🇦</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">As a Spanish family in Qatar, finding good household help was our biggest challenge. Fresh Breeze solved it perfectly with a wonderful live-in housemaid. Gracias!</p><div class="reviewer"><div class="rev-av">IR</div><div><div class="rev-name">Isabella R****</div><div class="rev-loc">Live-In Housemaid · Al Sadd 🇪🇸</div></div></div></div>
-    <div class="rev-card"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze is truly the best in the business. Our live-out housemaid is a star — organised, cheerful and very dedicated. We have recommended them to everyone we know!</p><div class="reviewer"><div class="rev-av">ZA</div><div><div class="rev-name">Zayed A*****</div><div class="rev-loc">Live-Out Housemaid · Al Dafna 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services placed a wonderful live-in housemaid for our villa in West Bay. She is professional, trustworthy, and our home has never been so well-maintained!</p><div class="reviewer"><div class="rev-av">FA</div><div><div class="rev-name">Fatima A*******</div><div class="rev-loc">Live-In Housemaid · West Bay 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We hired a live-out nanny for our two children. She arrives on time every morning and the schedule works perfectly for our busy family in Lusail.</p><div class="reviewer"><div class="rev-av">KM</div><div><div class="rev-name">Khalid &amp; Maryam A**</div><div class="rev-loc">Live-Out Nanny · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our housemaid has been with us almost a year. She is part of our family. Professional, caring and incredibly hardworking. Thank you Fresh Breeze Cleaning Services!</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Sara A********</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our nanny from Fresh Breeze Cleaning Services is amazing with our baby. Very patient, loving and responsible. The process was smooth and the team was very helpful.</p><div class="reviewer"><div class="rev-av">MA</div><div><div class="rev-name">Mohammed A*****</div><div class="rev-loc">Live-In Nanny · Al Waab 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Very responsive team. They found us a great housemaid within days. She keeps our home spotless and is wonderful with our kids. Best decision we made!</p><div class="reviewer"><div class="rev-av">HA</div><div><div class="rev-name">Hessa A*******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">I was worried about finding a trustworthy nanny but Fresh Breeze Cleaning Services made it so easy. All staff are verified and trained. Our nanny is gentle and my daughter loves her!</p><div class="reviewer"><div class="rev-av">LA</div><div><div class="rev-name">Layla A*********</div><div class="rev-loc">Live-Out Nanny · Msheireb 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services found us a fantastic nanny in less than a week. She handles our twins with so much patience and love. Truly a five star service.</p><div class="reviewer"><div class="rev-av">DA</div><div><div class="rev-name">Dana &amp; Tariq A*</div><div class="rev-loc">Live-In Nanny · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">What makes Fresh Breeze Cleaning Services special is how they care about matching the right person. Our housemaid has been with us 8 months and we could not be happier.</p><div class="reviewer"><div class="rev-av">YA</div><div><div class="rev-name">Yousef A**</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We have been clients of Fresh Breeze Cleaning Services for over a year. Every interaction has been professional. Our live-in nanny is brilliant and our children are so happy.</p><div class="reviewer"><div class="rev-av">OA</div><div><div class="rev-name">Omar &amp; Fatima A*</div><div class="rev-loc">Live-In Nanny · Umm Salal 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">The best cleaning company in Qatar. Our office was cleaned to an incredibly high standard. Staff were friendly and finished ahead of schedule.</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Salma A*</div><div class="rev-loc">Live-Out Housemaid · C-Ring Road 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services provided us with an exceptional live-in housemaid. She is hardworking, honest and keeps our home in perfect order every single day.</p><div class="reviewer"><div class="rev-av">NA</div><div><div class="rev-name">Noura A*******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our live-out housemaid from Fresh Breeze is wonderful. She comes every day on time and leaves everything spotless. We are very happy with the service!</p><div class="reviewer"><div class="rev-av">RA</div><div><div class="rev-name">Rania A****</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">I am so impressed by how professional Fresh Breeze Cleaning Services is. They matched us with the perfect housemaid in just a few days. Highly recommend!</p><div class="reviewer"><div class="rev-av">AB</div><div><div class="rev-name">Ahmed B*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We have a live-out housemaid from Fresh Breeze and she is absolutely fantastic. Very thorough, reliable and a pleasure to have in our home.</p><div class="reviewer"><div class="rev-av">MB</div><div><div class="rev-name">Mariam B******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">As a European family living in Qatar, we were nervous about finding reliable help. Fresh Breeze made the whole process so easy and our housemaid is absolutely brilliant!</p><div class="reviewer"><div class="rev-av">EL</div><div><div class="rev-name">Emma L*****</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇬🇧</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We have used Fresh Breeze for our live-out housemaid for 6 months now. She is punctual, efficient and wonderful with our children. Could not ask for more!</p><div class="reviewer"><div class="rev-av">CL</div><div><div class="rev-name">Claire &amp; James L**</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇫🇷</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze found us a live-in housemaid who truly feels like family. She is caring, professional and we trust her completely with our home and children.</p><div class="reviewer"><div class="rev-av">TA</div><div><div class="rev-name">Tariq A******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">I was referred to Fresh Breeze by a friend and I am so glad I called them. Our live-out housemaid is amazing and the team was so helpful throughout the process.</p><div class="reviewer"><div class="rev-av">DA</div><div><div class="rev-name">Dalal A*****</div><div class="rev-loc">Live-Out Housemaid · Umm Salal 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid has transformed our daily life. The house is always clean, meals are prepared and we have so much more time for our family.</p><div class="reviewer"><div class="rev-av">WA</div><div><div class="rev-name">Waleed A*******</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Five stars without hesitation. Fresh Breeze provided a live-out housemaid who is simply outstanding. Very professional, kind and we are extremely satisfied.</p><div class="reviewer"><div class="rev-av">AM</div><div><div class="rev-name">Anna M******</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇩🇪</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">As expats in Qatar, we needed reliable household help fast. Fresh Breeze delivered within days with a wonderful live-in housemaid. We are beyond happy!</p><div class="reviewer"><div class="rev-av">PB</div><div><div class="rev-name">Peter &amp; Brigitte B*</div><div class="rev-loc">Live-In Housemaid · West Bay 🇧🇪</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services truly exceeded our expectations. Our live-in housemaid is diligent, warm and we could not imagine our home without her now.</p><div class="reviewer"><div class="rev-av">FA</div><div><div class="rev-name">Faisal A*****</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">The live-out housemaid Fresh Breeze sent us is absolutely wonderful. She manages everything perfectly and our home has never looked better. Highly recommend!</p><div class="reviewer"><div class="rev-av">HA</div><div><div class="rev-name">Hana A*******</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We searched for a long time for the right housemaid. Fresh Breeze found us the perfect match. Our live-in housemaid is reliable, skilled and very respectful.</p><div class="reviewer"><div class="rev-av">JR</div><div><div class="rev-name">Julie R*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇫🇷</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze is the best agency in Qatar. Our live-out housemaid is a gem — always smiling, thorough and very professional. We are 100% satisfied customers!</p><div class="reviewer"><div class="rev-av">BA</div><div><div class="rev-name">Bader A****</div><div class="rev-loc">Live-Out Housemaid · C-Ring Road 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">I cannot thank Fresh Breeze enough. They found us a wonderful live-in housemaid who is honest, hardworking and amazing with our elderly mother. Truly grateful!</p><div class="reviewer"><div class="rev-av">AA</div><div><div class="rev-name">Aisha A*******</div><div class="rev-loc">Live-In Housemaid · Al Dafna 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We have been with Fresh Breeze for over a year and our live-out housemaid is simply the best. Always on time, always thorough and always cheerful. Love this service!</p><div class="reviewer"><div class="rev-av">MK</div><div><div class="rev-name">Maria K*****</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇬🇷</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid from Fresh Breeze has been with us for 10 months. She is exceptional in every way — clean, organised and so kind to our children.</p><div class="reviewer"><div class="rev-av">QA</div><div><div class="rev-name">Qassim A*****</div><div class="rev-loc">Live-In Housemaid · Umm Salal 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze provided us with a live-out housemaid who goes above and beyond every single day. The team was professional and the placement process was seamless.</p><div class="reviewer"><div class="rev-av">LH</div><div><div class="rev-name">Laura H******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇳🇱</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We are a big family and needed someone experienced. Fresh Breeze delivered perfectly — our live-in housemaid manages everything with ease and we are very grateful.</p><div class="reviewer"><div class="rev-av">JA</div><div><div class="rev-name">Jassim A******</div><div class="rev-loc">Live-In Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">The recruitment process with Fresh Breeze was fast and transparent. Our live-out housemaid started within a week and she is absolutely brilliant. 5 stars!</p><div class="reviewer"><div class="rev-av">SA</div><div><div class="rev-name">Shaikha A*****</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fantastic agency! Fresh Breeze matched us with an incredible live-in housemaid. She keeps our villa spotless and our kids absolutely adore her. So thankful!</p><div class="reviewer"><div class="rev-av">TS</div><div><div class="rev-name">Thomas S******</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇦🇹</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We had a great experience with Fresh Breeze. Our live-out housemaid is hardworking, discreet and very professional. We recommend them to all our friends in Qatar.</p><div class="reviewer"><div class="rev-av">NA</div><div><div class="rev-name">Nadia &amp; Saad A*</div><div class="rev-loc">Live-Out Housemaid · Al Waab 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid from Fresh Breeze Cleaning Services is absolutely incredible. She is detail-oriented, caring and we have never had to worry about our home.</p><div class="reviewer"><div class="rev-av">MO</div><div><div class="rev-name">Moza A*******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">I was referred by a colleague and Fresh Breeze did not disappoint. Our live-out housemaid is exceptional. Always reliable and our home is always immaculate!</p><div class="reviewer"><div class="rev-av">CF</div><div><div class="rev-name">Charlotte F****</div><div class="rev-loc">Live-Out Housemaid · Al Sadd 🇬🇧</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze found us a live-in housemaid who is a true professional. She manages our large home effortlessly and our family is happier than ever. Thank you!</p><div class="reviewer"><div class="rev-av">IA</div><div><div class="rev-name">Ibrahim A******</div><div class="rev-loc">Live-In Housemaid · Al Dafna 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We love our live-out housemaid from Fresh Breeze! She is wonderful with our home and our pets. The team was so helpful and made the whole process very simple.</p><div class="reviewer"><div class="rev-av">VA</div><div><div class="rev-name">Valentina A***</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇮🇹</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Outstanding service! Our live-in housemaid is the best we have ever had. Fresh Breeze really takes the time to find the right match. We are lifelong customers!</p><div class="reviewer"><div class="rev-av">AA</div><div><div class="rev-name">Abdullah A*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze provided us with a live-out housemaid who is simply outstanding. Professional, kind and incredibly thorough. Best agency in Qatar without a doubt!</p><div class="reviewer"><div class="rev-av">HP</div><div><div class="rev-name">Hannah P*****</div><div class="rev-loc">Live-Out Housemaid · Msheireb 🇸🇪</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">As a busy working mum, having a reliable live-in housemaid from Fresh Breeze has changed my life completely. I can focus on work knowing my home is in great hands.</p><div class="reviewer"><div class="rev-av">SW</div><div><div class="rev-name">Sarah W******</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇦🇺</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">As a Spanish family in Qatar, finding good household help was our biggest challenge. Fresh Breeze solved it perfectly with a wonderful live-in housemaid. Gracias!</p><div class="reviewer"><div class="rev-av">IR</div><div><div class="rev-name">Isabella R****</div><div class="rev-loc">Live-In Housemaid · Al Sadd 🇪🇸</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze is truly the best in the business. Our live-out housemaid is a star — organised, cheerful and very dedicated. We have recommended them to everyone we know!</p><div class="reviewer"><div class="rev-av">ZA</div><div><div class="rev-name">Zayed A*****</div><div class="rev-loc">Live-Out Housemaid · Al Dafna 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Incredible experience with Fresh Breeze. Our live-out housemaid is efficient, warm and takes great pride in her work. Our home has never been so clean and organised!</p><div class="reviewer"><div class="rev-av">EA</div><div><div class="rev-name">Elsa A******</div><div class="rev-loc">Live-Out Housemaid · West Bay 🇩🇰</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze matched us with a fantastic live-in housemaid who exceeded all our expectations. The team was professional and supportive throughout. Highly recommended!</p><div class="reviewer"><div class="rev-av">BA</div><div><div class="rev-name">Badriya A*****</div><div class="rev-loc">Live-In Housemaid · Lusail City 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">We are so pleased with our live-out housemaid from Fresh Breeze. She is attentive, hardworking and always goes the extra mile. Fantastic service all round!</p><div class="reviewer"><div class="rev-av">TA</div><div><div class="rev-name">Tala A*******</div><div class="rev-loc">Live-Out Housemaid · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Very happy with Fresh Breeze! Our live-out housemaid is fantastic — disciplined, friendly and does an excellent job every time. We will never go anywhere else.</p><div class="reviewer"><div class="rev-av">KA</div><div><div class="rev-name">Khalifa A*****</div><div class="rev-loc">Live-Out Housemaid · Umm Salal 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Fresh Breeze Cleaning Services gave us the most reliable live-in housemaid. She treats our home with so much care and respect. We are truly grateful for this service.</p><div class="reviewer"><div class="rev-av">LA</div><div><div class="rev-name">Latifa A*******</div><div class="rev-loc">Live-In Housemaid · Al Waab 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Our live-in housemaid has been with us 7 months now and we could not be happier. Fresh Breeze really listens to what you need and delivers exactly that!</p><div class="reviewer"><div class="rev-av">MA</div><div><div class="rev-name">Mansour A****</div><div class="rev-loc">Live-In Housemaid · C-Ring Road 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Excellent service from start to finish. Our live-in housemaid is well-trained, trustworthy and has become a valued part of our household. Thank you Fresh Breeze!</p><div class="reviewer"><div class="rev-av">SM</div><div><div class="rev-name">Sophie M*****</div><div class="rev-loc">Live-In Housemaid · The Pearl 🇶🇦</div></div></div></div>
+    <div class="rev-card fade-in-up"><div class="stars">★★★★★</div><p class="rev-text">Five stars from our whole family! Fresh Breeze provided a live-out housemaid who is simply exceptional. Professional, punctual and incredibly dedicated. Best decision ever!</p><div class="reviewer"><div class="rev-av">RE</div><div><div class="rev-name">Reem A*******</div><div class="rev-loc">Live-Out Housemaid · Al Rayyan 🇶🇦</div></div></div></div>
   </div>
 </section>
 
@@ -1479,12 +1559,27 @@ window.addEventListener('scroll', () => {
 
 // ====== PARALLAX BACKGROUND ======
 const parallaxBg = document.getElementById('parallax-bg');
-if (parallaxBg) {
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    parallaxBg.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
-  }, { passive: true });
-}
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  if (parallaxBg) parallaxBg.style.transform = 'translateY(' + (scrollY * 0.4) + 'px)';
+  // Particles parallax
+  const dots = document.querySelectorAll('.p-dot');
+  dots.forEach((dot, i) => {
+    const speed = 0.1 + (i * 0.05);
+    dot.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+  });
+  // Nav enhancement on scroll
+  const nav = document.querySelector('nav');
+  if (nav) {
+    if (scrollY > 60) {
+      nav.style.background = 'rgba(2,24,37,.97)';
+      nav.style.boxShadow = '0 4px 30px rgba(0,0,0,.4)';
+    } else {
+      nav.style.background = '';
+      nav.style.boxShadow = '';
+    }
+  }
+}, { passive: true });
 
 // ====== FADE IN ON SCROLL ======
 const fadeEls = document.querySelectorAll('.fade-in-up');
